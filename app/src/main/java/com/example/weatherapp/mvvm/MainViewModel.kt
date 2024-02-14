@@ -17,24 +17,15 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
 
     private val _apiResult = MutableStateFlow<ApiResult<ForecastResponse>?>(null)
-
-
     val apiResult: Flow<ApiResult<ForecastResponse>?> = _apiResult.asStateFlow()
-
-
     private val apiScope = CoroutineScope(Dispatchers.IO)
-
-
     fun fetchData(lat: String, lng: String) {
 
         apiScope.launch {
-
             _apiResult.value = ApiResult.Loading
-
             try {
 
                 val response = APIManager.getAPIs().getWeatherData(lat, lng).execute()
-
                 if (response.isSuccessful) {
 
                     _apiResult.value = ApiResult.Success(response.body()!!)
@@ -60,9 +51,7 @@ class MainViewModel : ViewModel() {
 sealed class ApiResult<out T> {
 
     data class Success<out T>(val data: T) : ApiResult<T>()
-
     data class Error(val exception: Exception) : ApiResult<Nothing>()
-
     object Loading : ApiResult<Nothing>()
 
 }

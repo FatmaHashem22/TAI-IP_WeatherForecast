@@ -246,10 +246,6 @@ class MainActivity : BaseActivity() {
         progressBar.isVisible = true
         mainLayout.isVisible = false
 
-
-
-
-
     }
 
     fun initListeners() {
@@ -280,59 +276,6 @@ class MainActivity : BaseActivity() {
 
         })
     }
-
-    fun currentForecast(lat: String, lng : String) {
-        if (lat.isNotEmpty() && lng.isNotEmpty()) {
-            APIManager
-                .getAPIs()
-                .getWeatherData(
-                    lat,
-                    lng
-                ).enqueue(object : Callback<ForecastResponse> {
-                    override fun onResponse(
-                        call: Call<ForecastResponse>,
-                        response: Response<ForecastResponse>
-                    ) {
-                        if(response.body() != null){
-                            Log.e("OnResponse", "${response.body()?.list}")
-                            val forecastList = response.body()?.list!!
-                            val uniqueForecastList = mutableListOf<WeatherListItem>()
-
-                            Log.e("SIZE:","${forecastList.size}")
-                            for (item in forecastList.indices) {
-                                Log.e("ITERATORRR:","$item")
-
-
-                                if (item == 0 || item == 7 || item == 14 || item == 21 || item == 28) {
-
-                                    uniqueForecastList.add(forecastList[item]!!)
-
-                                }
-
-                            }
-                            runOnUiThread {
-                                currentDataForecast(response?.body()?.list!!)
-                                todayAdapter.updateDay(response?.body()?.list!!)
-                                forecastAdapter.updateForecast(uniqueForecastList!!)
-                            }
-
-                        }
-
-                    }
-
-                    override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
-                        Log.e("OnFailure", "$t")
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Something went wrong, please try again later!",
-                            Toast.LENGTH_LONG
-                        )
-                    }
-
-                })
-        }
-    }
-
 
     fun forecastByCity(city: String) {
 
