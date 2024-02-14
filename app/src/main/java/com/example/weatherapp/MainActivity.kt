@@ -80,9 +80,6 @@ class MainActivity : BaseActivity() {
         if (isGPAPersmissionAllowed()) {
             initViews()
             getUserLocation()
-//            finish()
-//            startActivity(intent)
-
 
             initListeners()
 
@@ -107,7 +104,7 @@ class MainActivity : BaseActivity() {
 
                 showDialog(
                     this,
-                    message = "Please Enable Location Permission to see drivers near you.",
+                    message = "Please Enable Location Permission to see location's forecast.",
                     posActionTitle = "Accept",
                     posAction = { dialog, which ->
                         dialog.dismiss()
