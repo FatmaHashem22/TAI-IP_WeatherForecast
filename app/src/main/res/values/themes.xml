@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.WeatherApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/royalBlue</item>
+        <item name="colorPrimaryDark">#0C1842</item>
+        <item name="colorAccent">#07F6BE</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+
+    <style name="searchViewStyle">
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="indicatorColor">@color/transparent</item>
+        <item name="iconTint">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:searchHintIcon">@drawable/ic_search</item>
+    </style>
+</resources>
