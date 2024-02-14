@@ -263,19 +263,19 @@ class MainActivity : BaseActivity() {
 
                     val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputMethodManager.hideSoftInputFromWindow(window.decorView.windowToken, 0)
-                    searchView.clearFocus()
+
                     searchView.setQuery("", false)
+                    searchView.clearFocus()
+                    searchView.isSubmitButtonEnabled = true
                 }
-                searchView.clearFocus()
 
 
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
 
-                searchView.clearFocus()
-                return true
+                return false
             }
 
         })
